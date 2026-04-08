@@ -29,12 +29,12 @@ scripts/safe-build-restart.sh
 
 Two cron jobs trigger QA checks daily:
 
-### 06:00 — Silent QA (Jarbas agent)
+### 06:00 - Silent QA (Jarbas agent)
 - Runs `POST /api/qa/run` via agent turn
 - If `ok: true` → no notification (silent pass)
 - If `ok: false` → sends Telegram alert to Master with the failing check
 
-### 09:01 — Verbose QA (Jarbas agent)
+### 09:01 - Verbose QA (Jarbas agent)
 - Same endpoint, but always reports to Master
 - GREEN: summary + 1 suggested improvement (for approval)
 - RED: alert with evidence + proposed fix (without applying)
@@ -59,5 +59,5 @@ No formal code coverage tooling. Coverage is achieved through:
 - QA results are persisted as `qa_run` events in the SQLite events table
 - Failed QA checks automatically open incidents (`incident_opened` events) with deduplication
 - The dashboard's `/api/qa/run` endpoint returns structured JSON with per-check results
-- Build verification is the primary gate before production restarts — TypeScript errors block deployment
-- No E2E browser tests (Playwright) yet — visual validation is manual
+- Build verification is the primary gate before production restarts - TypeScript errors block deployment
+- No E2E browser tests (Playwright) yet - visual validation is manual

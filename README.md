@@ -1,9 +1,9 @@
 # Agent Mission Control
 
-Operations dashboard for a 5-agent AI orchestration platform (OpenClaw), built with Next.js 15 and SQLite — featuring real-time KPIs, agent session tracing, cron/coordinator monitoring, approval queues, and budget controls.
+Operations dashboard for a 5-agent AI orchestration platform (OpenClaw), built with Next.js 15 and SQLite - featuring real-time KPIs, agent session tracing, cron/coordinator monitoring, approval queues, and budget controls.
 
 **Status:** Active
-**Live:** Not public (local network on port 3001) · **Docs:** [/docs](/docs) · **Demo:** [/docs/assets/demo.gif](/docs/assets/demo.gif)
+**Live:** Not public (local network & tailscale tunnel) · **Docs:** [/docs](/docs) · **Demo:** [/docs/assets/demo.gif](/docs/assets/demo.gif)
 
 ## Demo
 
@@ -11,9 +11,9 @@ Operations dashboard for a 5-agent AI orchestration platform (OpenClaw), built w
 
 ## Why this exists
 
-- Running 5 AI agents (4 cloud GPT-5.2 + 1 local Qwen 2.5 7B) across Telegram and Discord with no visibility into cost, failures, or session state — decisions were made blind
-- The coordinator loop runs every 5 minutes and cron triggers 8 scheduled jobs daily — incidents, stale approvals, and budget overruns needed a single pane of glass
-- Wanted a real operations dashboard (not just logs) that tracks KPIs, surfaces anomalies, and provides actionable controls like pause/resume/rerun — all from a browser
+- Running 5 AI agents (4 cloud GPT-5.2 + 1 local Qwen 2.5 7B) across Telegram and Discord with no visibility into cost, failures, or session state - decisions were made blind
+- The coordinator loop runs every 5 minutes and cron triggers 8 scheduled jobs daily - incidents, stale approvals, and budget overruns needed a single pane of glass
+- Wanted a real operations dashboard (not just logs) that tracks KPIs, surfaces anomalies, and provides actionable controls like pause/resume/rerun - all from a browser
 
 ## Key features
 
@@ -38,7 +38,7 @@ Operations dashboard for a 5-agent AI orchestration platform (OpenClaw), built w
 
 - Server components query SQLite directly for most pages; client components poll API routes (10-30s intervals) for real-time data like agent sessions and system status
 - A coordinator loop runs every 5 minutes via LaunchAgent, orchestrating agent turns, emitting events to SQLite, and enforcing budget guardrails
-- 25+ API routes power the dashboard — from `/api/openclaw/status` (live gateway/cron/session state) to `/api/sessions/stream` (SSE agent session tailing)
+- 25+ API routes power the dashboard - from `/api/openclaw/status` (live gateway/cron/session state) to `/api/sessions/stream` (SSE agent session tailing)
 
 See: [/docs/architecture.md](/docs/architecture.md)
 
@@ -68,18 +68,18 @@ npm run dev -- -p 3001
 - **Tests:** Automated QA health checks via `/api/qa/run` (daily cron at 06:00 + 09:01 Lisbon time)
 - **CI:** Manual build verification (`npm run build`) before production restart
 - **Known limits:**
-  - Dashboard UI is in Portuguese (pt-PT) — no i18n toggle yet
+  - Dashboard UI is in Portuguese (pt-PT) - no i18n toggle yet
   - SQLite is single-node (no replication or clustering)
-  - SSE session stream reads JSONL files from disk — high session volume may lag
+  - SSE session stream reads JSONL files from disk - high session volume may lag
   - Budget cost estimation falls back to per-event approximation when agents don't emit `total_cost_usd`
 
 ## Screenshots
 
 | Description | Screenshot |
 |-------------|------------|
-| Overview — executive KPIs and system status | ![Screenshot](/docs/assets/screenshot-01.png) |
-| Agent Office — presence map and session counts | ![Screenshot](/docs/assets/screenshot-02.png) |
-| Logs & Events — filterable timeline with payload preview | ![Screenshot](/docs/assets/screenshot-03.png) |
+| Overview - executive KPIs and system status | ![Screenshot](/docs/assets/screenshot-01.png) |
+| Agent Office - presence map and session counts | ![Screenshot](/docs/assets/screenshot-02.png) |
+| Logs & Events - filterable timeline with payload preview | ![Screenshot](/docs/assets/screenshot-03.png) |
 
 ## License
 

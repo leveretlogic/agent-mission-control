@@ -131,10 +131,10 @@ JSON response → React state update → UI render
 
 ## Key decisions
 
-- **SQLite over PostgreSQL** — Single-node deployment on macOS; WAL mode provides concurrent reads without a database server. 14 tables with 12 indexes handle the event volume (hundreds/day, not thousands/second).
-- **Server components by default** — Most dashboard pages query SQLite directly in server components, avoiding client-side fetch waterfalls and reducing JavaScript bundle. Only real-time panels (status, sessions) use client-side polling.
-- **LaunchAgents over Docker (production)** — macOS LaunchAgents provide auto-start on login, crash recovery, and native process management. Docker Compose exists for portability but isn't the primary deployment mode.
-- **Portuguese UI, English code** — Dashboard labels and navigation are in Portuguese (pt-PT) to match the owner's preference. All code, comments, and API responses use English.
+- **SQLite over PostgreSQL** - Single-node deployment on macOS; WAL mode provides concurrent reads without a database server. 14 tables with 12 indexes handle the event volume (hundreds/day, not thousands/second).
+- **Server components by default** - Most dashboard pages query SQLite directly in server components, avoiding client-side fetch waterfalls and reducing JavaScript bundle. Only real-time panels (status, sessions) use client-side polling.
+- **LaunchAgents over Docker (production)** - macOS LaunchAgents provide auto-start on login, crash recovery, and native process management. Docker Compose exists for portability but isn't the primary deployment mode.
+- **Portuguese UI, English code** - Dashboard labels and navigation are in Portuguese (pt-PT) to match the owner's preference. All code, comments, and API responses use English.
 
 ## Diagrams
 

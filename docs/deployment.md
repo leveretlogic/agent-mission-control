@@ -10,7 +10,7 @@
 
 ## Requirements
 
-- macOS (darwin arm64) — LaunchAgents require macOS
+- macOS (darwin arm64) - LaunchAgents require macOS
 - Node.js 18+ (LTS)
 - npm or pnpm
 - OpenClaw root directory (`~/.openclaw/`) with configured agents
@@ -79,9 +79,9 @@ MISSION_CONTROL_API_KEY=<key> docker compose up -d
 ```
 
 Services:
-- **app** — Next.js production server (port 3000)
-- **worker** — Event ingestion worker (polls `.data/events/inbox/`)
-- **volume** — `mission_data` for shared SQLite database
+- **app** - Next.js production server (port 3000)
+- **worker** - Event ingestion worker (polls `.data/events/inbox/`)
+- **volume** - `mission_data` for shared SQLite database
 
 ## Build and verify
 

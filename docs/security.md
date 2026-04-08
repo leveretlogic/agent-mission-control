@@ -6,7 +6,7 @@
 - SQLite database containing agent events, approval decisions, and cost data
 - Credential files (OAuth tokens for Gmail, OpenAI, Google Calendar)
 - Agent session logs (JSONL files with conversation content)
-- System configuration (`openclaw.json` — API keys, bot tokens, channel bindings)
+- System configuration (`openclaw.json` - API keys, bot tokens, channel bindings)
 - Dashboard API endpoints from unauthorized access
 
 ### From whom
@@ -15,7 +15,7 @@
 - Malformed or malicious event payloads injected into the ingest endpoint
 
 ### Assumptions
-- The dashboard runs on a local machine behind a home network — not exposed to the public internet
+- The dashboard runs on a local machine behind a home network - not exposed to the public internet
 - Tailscale VPN provides encrypted access when remote
 - The macOS user account is the sole operator (single-tenant)
 - Agents communicate via the gateway on localhost:18789
@@ -28,7 +28,7 @@
 - All mutation endpoints (approvals, workflow actions, settings) validate the key
 
 ### Network binding
-- Gateway binds to loopback only (`127.0.0.1:18789`) — never exposed externally
+- Gateway binds to loopback only (`127.0.0.1:18789`) - never exposed externally
 - Dashboard binds to `0.0.0.0:3001` for local network access (needed for mobile/tablet viewing via Tailscale)
 - No public DNS, no port forwarding, no Cloudflare Tunnel to the dashboard
 
@@ -39,7 +39,7 @@
 
 ### Gateway authentication
 - Gateway uses token-based auth: `Authorization: Bearer <token>` required for all gateway API calls
-- Token stored in `openclaw.json` — not committed to any repository
+- Token stored in `openclaw.json` - not committed to any repository
 
 ### Coordinator guardrails
 - PAUSE flag (`~/.openclaw/.claw/PAUSE`) immediately halts all agent turns
