@@ -13,6 +13,8 @@ every write goes through a confirm dialog and lands in an audit log.
 > lives in a private repo. This repo is the engineering story: the failure
 > analysis, the design that came out of it, and the load-bearing code.
 
+![Overview - every panel shows real system state with its data age](docs/assets/overview.png)
+
 ## The problem
 
 Five AI agents (Telegram + Discord) run under a central gateway on a Mac mini:
@@ -88,6 +90,10 @@ edits add a path allowlist (canonicalize, then prefix-check), a timestamped
 `.bak` before every write, and an mtime guard that returns 409 if the file
 changed since it was opened.
 
+![Enabling a cron job - the dialog shows exactly what will change](docs/assets/automations-confirm.png)
+
+![Memory edit review - red/green diff, automatic .bak, unchanged lines collapsed](docs/assets/memory-diff.png)
+
 ## Approving an AI agent's tool calls from a phone
 
 The dashboard embeds a Claude Code chat panel via the Agent SDK. The SDK's
@@ -109,6 +115,17 @@ canUseTool: (toolName, toolInput, { signal }) => {
 },
 ```
 
+![Claude panel - a Bash call caught by canUseTool, waiting for a human](docs/assets/claude-permission.png)
+
+![The same request in the approvals inbox on another device](docs/assets/approvals-inbox.png)
+
+One deliberate choice worth calling out: when the chat panel's SSE connection
+closes (navigating away, closing the tab), every pending permission is denied
+with "connection closed" rather than left waiting. A request can outlive the
+surface that created it only if another surface (the approvals inbox on a
+second device) is there to decide it - nothing stays approvable with nobody
+watching.
+
 ## Surfaces
 
 Overview · activity timeline (agent sessions + cron runs) · automations (cron
@@ -117,6 +134,8 @@ dates) · tasks (Notion, status/due editing) · approvals inbox (gateway
 allowlists + Claude tool permissions) · agents · memory browser/editor (+
 read-only Obsidian vault with navigable wikilinks) · Claude Code chat · system
 health with the audit log.
+
+![Tasks - Notion-backed, inline status/due editing (personal titles blurred)](docs/assets/tasks.png)
 
 ## Stack
 
