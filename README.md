@@ -13,7 +13,10 @@ every write goes through a confirm dialog and lands in an audit log.
 > lives in a private repo. This repo is the engineering story: the failure
 > analysis, the design that came out of it, and the load-bearing code.
 
-![Overview - every panel shows real system state with its data age](docs/assets/overview.png)
+<p>
+  <img src="docs/assets/overview.png" alt="Overview - every panel shows real system state with its data age" width="73%">
+  <img src="docs/assets/overview-mobile.png" alt="The same overview as an iPhone PWA - the surface this was designed for" width="21%">
+</p>
 
 ## The problem
 
@@ -90,7 +93,10 @@ edits add a path allowlist (canonicalize, then prefix-check), a timestamped
 `.bak` before every write, and an mtime guard that returns 409 if the file
 changed since it was opened.
 
-![Enabling a cron job - the dialog shows exactly what will change](docs/assets/automations-confirm.png)
+<p>
+  <img src="docs/assets/automations-confirm.png" alt="Enabling a cron job - the dialog shows exactly what will change" width="73%">
+  <img src="docs/assets/automations-confirm-mobile.png" alt="The same confirm dialog on the phone" width="21%">
+</p>
 
 ![Memory edit review - red/green diff, automatic .bak, unchanged lines collapsed](docs/assets/memory-diff.png)
 
@@ -117,7 +123,10 @@ canUseTool: (toolName, toolInput, { signal }) => {
 
 ![Claude panel - a Bash call caught by canUseTool, waiting for a human](docs/assets/claude-permission.png)
 
-![The same request in the approvals inbox on another device](docs/assets/approvals-inbox.png)
+<p>
+  <img src="docs/assets/approvals-inbox.png" alt="The same request in the approvals inbox on another device" width="73%">
+  <img src="docs/assets/approvals-inbox-mobile.png" alt="Deciding it from the iPhone - the 'another device' in practice" width="21%">
+</p>
 
 One deliberate choice worth calling out: when the chat panel's SSE connection
 closes (navigating away, closing the tab), every pending permission is denied
