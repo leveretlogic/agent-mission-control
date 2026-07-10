@@ -146,6 +146,15 @@ health with the audit log.
 
 ![Tasks - Notion-backed, inline status/due editing (personal titles blurred)](docs/assets/tasks.png)
 
+## Extracted patterns
+
+The load-bearing reliability pieces of this system - approval gates, health
+watchdogs, heartbeat freshness checks, stale-action fallbacks - live as small,
+copy-pasteable TypeScript in
+[ai-reliability-patterns](https://github.com/leveretlogic/ai-reliability-patterns).
+Each pattern carries the v1 post-mortem that motivated it and points back at
+its leaner v2 successor here.
+
 ## Stack
 
 Vite + React 19 + TypeScript strict (SPA, no SSR) · Hono on Node ·
